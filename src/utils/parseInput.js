@@ -1,17 +1,30 @@
-import moment from 'moment';
+'use strict';
 
-export default function parseInput(input, format, timeOfDay) {
-  let output = null;
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+exports['default'] = parseInput;
 
-  if (typeof input === 'undefined' ||  typeof input === 'null' || !input || input === '') {
-    output = moment()[timeOfDay]('day');
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _moment = require('moment');
+
+var _moment2 = _interopRequireDefault(_moment);
+
+function parseInput(input, format, timeOfDay) {
+  var output = null;
+
+  if (typeof input === 'undefined' || typeof input === 'null' || !input || input === '') {
+    output = (0, _moment2['default'])()[timeOfDay]('day');
   } else if (typeof input === 'string') {
-    output = moment(input, format)[timeOfDay]('day');
+    output = (0, _moment2['default'])(input, format)[timeOfDay]('day');
   } else if (typeof input === 'function') {
-    output = parseInput( input(moment()[timeOfDay]('day')) , format, timeOfDay);
+    output = parseInput(input((0, _moment2['default'])()[timeOfDay]('day')), format, timeOfDay);
   } else if (input._isAMomentObject) {
     output = input[timeOfDay]('day').clone();
   }
 
   return output;
 }
+
+module.exports = exports['default'];
