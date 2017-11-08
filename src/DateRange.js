@@ -56,16 +56,12 @@ var DateRange = (function (_Component) {
     var linkedCalendars = props.linkedCalendars;
     var theme = props.theme;
 
-    // var startDate = (0, _utilsParseInputJs2['default'])(props.startDate, format, 'startOf');
-    // var endDate = (0, _utilsParseInputJs2['default'])(props.endDate, format, 'endOf');
-    var startDate = !props.startDate ? props.startDate : (props.startDate, format, 'endOf');
-    var endDate = !props.endDate ? props.endDate : (props.endDate, format, 'endOf');
-    var noSameDay = props.noSameDay;
+    var startDate = !props.startDate ? props.startDate : (0, _utilsParseInputJs2['default'])(props.startDate, format, 'endOf');
+    var endDate = !props.endDate ? props.endDate : (0, _utilsParseInputJs2['default'])(props.endDate, format, 'endOf');
 
     this.state = {
       range: { startDate: startDate, endDate: endDate },
       link: linkedCalendars && endDate,
-      noSameDay: noSameDay
     };
 
     this.step = 0;
