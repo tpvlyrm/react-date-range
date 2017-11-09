@@ -78,7 +78,8 @@ var DateRange = (function (_Component) {
   }, {
     key: 'orderRange',
     value: function orderRange(range) {
-      const {startDate, endDate} = range;
+      const startDate = range.startDate;
+      const endDate = range.endDate;
 
       if(startDate && endDate) {
         var swap = startDate.isAfter(endDate);
